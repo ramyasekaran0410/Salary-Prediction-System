@@ -46,13 +46,6 @@ The dataset contains employee attributes including:
 
 1. **Day 1 & 2 - Data Handling:** Loading CSV data, inspecting `.head()`, `.tail()`, `.shape`, `.dtypes`, and filtering specific roles/columns.
 2. **Day 3 - Preprocessing:** Deduplication, categorical encoding on `Gender`, and normalization of `Salary` via `MinMaxScaler`.
-3. **Day 4 - Descriptive Statistics & IQR:** Computing distribution metrics and verifying outlier bounds using:
-
-$$\text{IQR} = Q_3 - Q_1$$
-
-
-$$\text{Lower Bound} = Q_1 - 1.5 \times \text{IQR}, \quad \text{Upper Bound} = Q_3 + 1.5 \times \text{IQR}$$
-
-
+3. **Day 4 - Descriptive Statistics & IQR:** Computing distribution metrics and verifying outlier bounds.
 4. **Day 5 - EDA & Visualization:** Generating univariate and bivariate plots along with a feature correlation matrix.
 5. **Machine Learning Pipeline:** Splitting data (80/20 train-test split), training the `DecisionTreeRegressor` (max depth = 5), and visualizing the decision tree structure.
