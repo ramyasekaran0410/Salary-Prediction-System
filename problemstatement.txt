@@ -1,186 +1,58 @@
-Salary Prediction System Using Data Science
+# 📌 Employee Salary Prediction & Exploratory Data Analysis (EDA)
 
-Random Forest Regressor uses multiple decision trees to predict salary more reliably by learning patterns from different job-related factors. It can handle both numerical and categorical features such as experience, education, job role, and location.
+## 📖 Problem Statement
 
-INPUTS
+In today's corporate landscape, determining a fair and competitive compensation structure is critical for talent acquisition and employee retention. Salary levels are typically influenced by multiple factors such as professional experience, age, educational background, job role, and demographic factors.
 
-- Education Level
-- Years of Experience
-- Job Role / Job Title
-- Skills
-- Location
-- Age
-- Employment Type
-- Previous Experience
+The objective of this project is to perform an end-to-end **Exploratory Data Analysis (EDA)**, **Statistical Evaluation**, and **Predictive Modeling** on employee demographic and employment data to understand how factors like **Experience**, **Age**, and **Gender** impact an employee's **Salary**, and to build a regression model using a **Decision Tree Regressor** to predict salary outcomes.
 
-OUTPUT
+---
 
-Predicted Salary / Expected Salary
+## 🎯 Objectives
 
-Example:
+* **Data Ingestion & Inspection:** Load, inspect, and summarize the dataset structure (features, data types, missing values, duplicates).
+* **Data Preprocessing:** Handle categorical variables via **Label Encoding** and scale numerical values using **Min-Max Scaling**.
+* **Statistical Analysis:** Calculate descriptive statistics (Mean, Median, Mode, Variance, Standard Deviation) and detect outliers using the **Interquartile Range (IQR)** method.
+* **Exploratory Data Analysis (EDA):** Visualize distributions, relationships, and feature correlations using histograms, scatter plots, count plots, box plots, and correlation heatmaps.
+* **Predictive Modeling:** Train a **Decision Tree Regressor** using key features (`Experience`, `Age`, `Gender`) to predict the normalized salary and evaluate the model using the $R^2$ Score.
 
-Predicted Salary: ₹6.5 LPA
+---
 
-PROCESS
+## 📊 Dataset Overview
 
-1. Dataset Collection
+The dataset contains employee attributes including:
 
-Collect historical employee and job-related salary data containing different factors that can influence an individual's salary.
+* **Name:** Employee identifier
+* **Education:** Educational qualification (High School, Bachelor, Master, PhD)
+* **Experience:** Years of professional experience
+* **Location:** Work location type (Urban, Suburban, Rural)
+* **Job_Title:** Role (Manager, Director, Analyst, Engineer, etc.)
+* **Age:** Age of the employee
+* **Gender:** Employee gender (Encoded numerically)
+* **Salary:** Target variable (Original & Min-Max Scaled)
 
-The dataset contains features such as education, experience, job title, location, and salary.
+---
 
-2. Data Preprocessing
+## 🛠️ Tech Stack & Libraries
 
-Clean and prepare the collected dataset before training the Machine Learning model.
+* **Language:** Python
+* **Data Manipulation:** `pandas`, `numpy`
+* **Data Preprocessing & ML:** `scikit-learn` (`LabelEncoder`, `MinMaxScaler`, `DecisionTreeRegressor`, `train_test_split`, `r2_score`)
+* **Data Visualization:** `matplotlib`, `seaborn`
 
-This includes:
+---
 
-- Handling missing values
-- Removing duplicate records
-- Removing invalid data
-- Handling inconsistent values
-- Converting data types
-- Handling outliers
+## 🚀 Key Workflow Steps
 
-3. Feature Selection
+1. **Day 1 & 2 - Data Handling:** Loading CSV data, inspecting `.head()`, `.tail()`, `.shape`, `.dtypes`, and filtering specific roles/columns.
+2. **Day 3 - Preprocessing:** Deduplication, categorical encoding on `Gender`, and normalization of `Salary` via `MinMaxScaler`.
+3. **Day 4 - Descriptive Statistics & IQR:** Computing distribution metrics and verifying outlier bounds using:
 
-Identify the important features that have a significant impact on salary.
+$$\text{IQR} = Q_3 - Q_1$$
 
-Features such as:
 
-- Experience
-- Education
-- Job Role
-- Skills
-- Location
+$$\text{Lower Bound} = Q_1 - 1.5 \times \text{IQR}, \quad \text{Upper Bound} = Q_3 + 1.5 \times \text{IQR}$$
 
-are considered for prediction.
 
-4. Data Encoding
-
-Machine Learning models require numerical input, so categorical features are converted into numerical values using encoding techniques.
-
-Examples:
-
-- Education Level → Numerical values
-- Job Role → Encoded values
-- Location → Encoded values
-
-5. Train-Test Split
-
-The processed dataset is divided into training and testing data.
-
-80% → Training Data
-20% → Testing Data
-
-The training data is used to build the model, while the testing data is used to check its performance on unseen data.
-
-6. Model Training
-
-The Random Forest Regressor is trained using the selected features.
-
-Random Forest combines predictions from multiple decision trees to produce a more stable and reliable salary prediction.
-
-7. Salary Prediction
-
-After training, the model accepts a new employee/job profile as input and predicts the expected salary.
-
-Example:
-
-Experience: 3 Years
-Education: Bachelor's Degree
-Job Role: Software Developer
-Location: Chennai
-
-Predicted Salary: ₹6.2 LPA
-
-8. Model Evaluation
-
-The trained model is evaluated using different regression metrics.
-
-- MAE – Measures the average prediction error.
-- RMSE – Measures the magnitude of prediction errors.
-- R² Score – Measures how well the model explains salary variations.
-
-The model with better evaluation performance is selected for the final system.
-
-WORKFLOW
-
-Dataset
-   ↓
-Data Preprocessing
-   ↓
-Feature Selection
-   ↓
-Categorical Encoding
-   ↓
-Train/Test Split
-   ↓
-Random Forest Regression
-   ↓
-Model Evaluation
-   ↓
-Salary Prediction
-   ↓
-Salary Evaluation
-
-UNIQUE FEATURE - SALARY EVALUATION
-
-The system can compare the predicted salary with the user's expected salary and provide an evaluation.
-
-This helps users understand whether their expected salary is:
-
-- Lower than the predicted salary
-- Close to the predicted salary
-- Higher than the predicted salary
-
-Example
-
-Predicted Salary: ₹6.5 LPA
-Expected Salary: ₹8.0 LPA
-
-Difference: ₹1.5 LPA
-
-Recommendation: 🟡 Expected salary is higher than the predicted market value.
-
-Another example:
-
-Predicted Salary: ₹7.5 LPA
-Expected Salary: ₹7.2 LPA
-
-Difference: ₹0.3 LPA
-
-Recommendation: 🟢 Expected salary is close to the predicted value.
-
-TECHNOLOGIES USED
-
-- Python – Main programming language
-- Pandas – Data cleaning and analysis
-- NumPy – Numerical operations
-- Matplotlib – Data visualization
-- Seaborn – Statistical visualization
-- Scikit-learn – Machine Learning and model evaluation
-- Jupyter Notebook / Google Colab – Development and analysis
-- Git & GitHub – Version control and project management
-
-MACHINE LEARNING ALGORITHM
-
-Random Forest Regressor
-
-Random Forest Regressor is used because it combines multiple decision trees and averages their predictions to produce the final salary prediction.
-
-It is useful for this project because it can:
-
-- Handle non-linear relationships
-- Work with multiple features
-- Handle complex relationships between experience, education, role, and salary
-- Reduce overfitting compared to a single decision tree
-- Provide feature importance
-
-FINAL OUTCOME
-
-The system provides:
-
-Predicted Salary + Expected Salary Comparison + Salary Evaluation
-
-This project demonstrates a complete Data Science and Machine Learning workflow, from collecting and preprocessing salary data to training a regression model, evaluating its performance, and generating salary predictions for new users.
+4. **Day 5 - EDA & Visualization:** Generating univariate and bivariate plots along with a feature correlation matrix.
+5. **Machine Learning Pipeline:** Splitting data (80/20 train-test split), training the `DecisionTreeRegressor` (max depth = 5), and visualizing the decision tree structure.
